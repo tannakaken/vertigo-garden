@@ -3,6 +3,8 @@ import "./App.css";
 import * as THREE from "three";
 import { VRButton, XR, Controllers, Hands } from "@react-three/xr";
 import { useLoader, Canvas } from "@react-three/fiber";
+import { OrbitControls } from "@react-three/drei";
+import BoxButton from "./box-button";
 
 function App() {
   const texture = useLoader(THREE.TextureLoader, "front.jpg");
@@ -11,13 +13,22 @@ function App() {
       <VRButton />
       <Canvas>
         <XR>
+          <OrbitControls
+            enableZoom={false}
+            enablePan={false}
+            enableDamping
+            reverseOrbit
+            dampingFactor={0.2}
+            maxPolarAngle={Math.PI / 2}
+            minPolarAngle={Math.PI / 2}
+          />
           <Controllers />
           <Hands />
-          <mesh>
-            <boxGeometry />
-            <meshBasicMaterial color="blue" />
-          </mesh>
-          <mesh>
+          <ambientLight />
+          <pointLight position={[10, 10, 10]} />
+          <BoxButton position={[2, 0, -10]} />
+          <BoxButton position={[-2, 0, -10]} />
+          <mesh rotation={[0, Math.PI / 2, 0]}>
             <sphereBufferGeometry attach="geometry" args={[500, 60, 40]} />
             <meshBasicMaterial
               attach="material"
