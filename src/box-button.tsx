@@ -1,6 +1,7 @@
 import React, { useRef, useState } from "react";
 import { useFrame } from "@react-three/fiber";
 import { Mesh } from "three";
+import { Interactive } from "@react-three/xr";
 
 const BoxButton = (props: any) => {
   const ref = useRef<Mesh>();
@@ -11,16 +12,25 @@ const BoxButton = (props: any) => {
     }
   });
   return (
-    <mesh
-      {...props}
-      ref={ref}
-      onClick={() => props.onClick?.()}
-      onPointerOver={() => setSpeed(0.03)}
-      onPointerOut={() => setSpeed(0.01)}
+    <Interactive
+      onHover={() => {
+        setSpeed(0.03);
+      }}
+      onBlur={() => {
+        setSpeed(0.01);
+      }}
     >
-      <boxGeometry args={[1, 1, 1]} />
-      <meshStandardMaterial color={speed === 0.03 ? "hotpink" : "orange"} />
-    </mesh>
+      <mesh
+        {...props}
+        ref={ref}
+        onClick={() => props.onClick?.()}
+        onPointerOver={() => setSpeed(0.03)}
+        onPointerOut={() => setSpeed(0.01)}
+      >
+        <boxGeometry args={[1, 1, 1]} />
+        <meshStandardMaterial color={speed === 0.03 ? "hotpink" : "orange"} />
+      </mesh>
+    </Interactive>
   );
 };
 
