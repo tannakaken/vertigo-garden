@@ -1,13 +1,16 @@
 import React, { useRef, useState } from "react";
 import { useFrame } from "@react-three/fiber";
-import { Mesh } from "three";
+import { Mesh, Vector3Tuple } from "three";
 import { Interactive } from "@react-three/xr";
 
-const BoxButton = (props: any) => {
-  const ref = useRef<Mesh>();
+const BoxButton = (props: {
+  position?: Vector3Tuple;
+  onClick?: () => void;
+}) => {
+  const ref = useRef<Mesh>(null);
   const [speed, setSpeed] = useState(0.01);
   useFrame((state, delta) => {
-    if (ref.current) {
+    if (ref && ref.current) {
       ref.current.rotation.x += speed;
     }
   });
