@@ -13,7 +13,7 @@ const text =
   "おはようございます。あなたは今ここにいますか？　もしそこにいるなら、そこがどこか私に教えてくれませんか？";
 
 function App() {
-  const texture = useLoader(THREE.TextureLoader, "front.jpg");
+  const texture = useLoader(THREE.TextureLoader, "sample0.png");
   const ref = useRef<OrbitControlsImpl>(null);
 
   return (
@@ -28,8 +28,6 @@ function App() {
             enableDamping
             reverseOrbit
             dampingFactor={0.2}
-            maxPolarAngle={Math.PI / 2}
-            minPolarAngle={Math.PI / 2}
             onChange={() => {
               if (ref.current) {
                 const angle = ref.current.getAzimuthalAngle();
