@@ -13,7 +13,7 @@ const text =
   "おはようございます。あなたは今ここにいますか？　もしそこにいるなら、そこがどこか私に教えてくれませんか？";
 
 function App() {
-  const texture = useLoader(THREE.TextureLoader, "sample0.png");
+  const texture = useLoader(THREE.TextureLoader, "sample1.png");
   const ref = useRef<OrbitControlsImpl>(null);
 
   return (
