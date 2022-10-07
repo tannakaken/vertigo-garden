@@ -16,6 +16,7 @@ const RingText = (props: Props) => {
         const theta = -(i * Math.PI * 2) / period;
         return (
           <Text
+            key={`ringtext-${character}-${index}`}
             position={[8 * Math.sin(theta), 0, 8 * Math.cos(theta)]}
             rotation={[0, theta + Math.PI, 0]}
             font="./NotoSansJP-Regular.otf"
