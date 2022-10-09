@@ -1,15 +1,16 @@
-import React, { useMemo, useState } from "react";
+import React, { useState } from "react";
 import { Text } from "@react-three/drei";
 import { useFrame } from "@react-three/fiber";
-import { Vector3 } from "three";
+import { useController } from "@react-three/xr";
 
 const DebugText = () => {
-  const direction = useMemo(() => new Vector3(), []);
+  const gazeController = useController("none");
   const [value, setValue] = useState(0);
   useFrame((state) => {
     //setValue(state.camera.rotation.y);
-    state.camera.getWorldDirection(direction);
-    setValue(direction.y);
+    if (gazeController) {
+      setValue(gazeController.rotation.y);
+    }
   });
   return (
     <Text
