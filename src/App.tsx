@@ -19,18 +19,18 @@ const configTexture = (texture: THREE.Texture) => {
 };
 
 function App() {
-  const texture1 = useLoader(THREE.TextureLoader, "initial_image.png");
-  const texture2 = useLoader(THREE.TextureLoader, "second_image.png");
-  const texture3 = useLoader(THREE.TextureLoader, "third_image.png");
-  const texture4 = useLoader(THREE.TextureLoader, "forth_image.png");
-  const texture5 = useLoader(THREE.TextureLoader, "fifth_image.png");
-  const texture6 = useLoader(THREE.TextureLoader, "sixth_image.png");
-  const texture7 = useLoader(THREE.TextureLoader, "seventh_image.png");
-  const texture8 = useLoader(THREE.TextureLoader, "eighth_image.png");
-  const texture9 = useLoader(THREE.TextureLoader, "nineth_image.png");
-  const texture10 = useLoader(THREE.TextureLoader, "tenth_image.png");
-  const texture11 = useLoader(THREE.TextureLoader, "eleventh_image.png");
-  const lastTexture = useLoader(THREE.TextureLoader, "last_image.png");
+  const texture1 = useLoader(THREE.TextureLoader, "initial_image.webp");
+  const texture2 = useLoader(THREE.TextureLoader, "second_image.webp");
+  const texture3 = useLoader(THREE.TextureLoader, "third_image.webp");
+  const texture4 = useLoader(THREE.TextureLoader, "forth_image.webp");
+  const texture5 = useLoader(THREE.TextureLoader, "fifth_image.webp");
+  const texture6 = useLoader(THREE.TextureLoader, "sixth_image.webp");
+  const texture7 = useLoader(THREE.TextureLoader, "seventh_image.webp");
+  const texture8 = useLoader(THREE.TextureLoader, "eighth_image.webp");
+  const texture9 = useLoader(THREE.TextureLoader, "nineth_image.webp");
+  const texture10 = useLoader(THREE.TextureLoader, "tenth_image.webp");
+  const texture11 = useLoader(THREE.TextureLoader, "eleventh_image.webp");
+  const lastTexture = useLoader(THREE.TextureLoader, "last_image.webp");
   const textures = useMemo(() => {
     return [
       texture1,
