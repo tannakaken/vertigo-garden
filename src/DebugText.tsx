@@ -13,14 +13,14 @@ const DebugText = () => {
     // @ts-ignore
     if (typeof DeviceOrientationEvent["requestPermission"] === "function") {
       // @ts-ignore
-      DeviceOrientationEvent["requestPermission"]().then(
-        (permissionStatus: string) => {
+      DeviceOrientationEvent["requestPermission"]()
+        .then((permissionStatus: string) => {
           alert(permissionStatus);
           if (permissionStatus === "granted") {
             window.addEventListener("deviceorientation", handleOrientation);
           }
-        }
-      );
+        })
+        .catch((error: any) => alert(error));
     } else {
       window.addEventListener("deviceorientation", handleOrientation);
     }
