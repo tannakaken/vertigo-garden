@@ -1,10 +1,4 @@
-import React, {
-  useCallback,
-  useEffect,
-  useMemo,
-  useRef,
-  useState,
-} from "react";
+import React, { useCallback, useEffect, useMemo, useRef } from "react";
 import "./App.css";
 import * as THREE from "three";
 import { VRButton, XR } from "@react-three/xr";
@@ -91,7 +85,7 @@ const Dream = () => {
           orientation.alpha = event.alpha;
         }
         if (event.beta) {
-          const diff = -((orientation.beta - event.beta) / 180) * Math.PI * 2;
+          const diff = -((orientation.beta - event.beta) / 180) * Math.PI;
           orbitControlRef.current.setPolarAngle(
             orbitControlRef.current.getPolarAngle() + diff
           );
