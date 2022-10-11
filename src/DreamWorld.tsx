@@ -24,7 +24,7 @@ const configTexture = (texture: THREE.Texture) => {
   texture.repeat.x = -1;
 };
 
-const Dream = () => {
+const DreamWorld = () => {
   const textureList = useLoader(THREE.TextureLoader, [
     "initial_image.webp",
     "second_image.webp",
@@ -217,4 +217,4 @@ const Dream = () => {
   );
 };
 
-export default Dream;
+export default DreamWorld;

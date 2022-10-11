@@ -1,12 +1,12 @@
 import React, { Suspense } from "react";
 import "./App.css";
-import Dream from "./Dream";
+import DreamWorld from "./DreamWorld";
 import Loading from "./Loading";
 
 function App() {
   return (
     <Suspense fallback={<Loading />}>
-      <Dream />
+      <DreamWorld />
     </Suspense>
   );
 }
