@@ -11,6 +11,8 @@ const DebugText = () => {
   }, []);
   useEffect(() => {
     // @ts-ignore
+    alert(DeviceOrientationEvent["requestPermission"]);
+    // @ts-ignore
     if (typeof DeviceOrientationEvent["requestPermission"] === "function") {
       // @ts-ignore
       DeviceOrientationEvent["requestPermission"]().then(
