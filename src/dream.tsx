@@ -136,7 +136,7 @@ const Dream = () => {
           }
         }}
       >
-        窓
+        あちらへの窓
       </button>
       <Canvas>
         <XR>
