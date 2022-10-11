@@ -72,17 +72,17 @@ const Dream = () => {
     materialRef.current.map = textures[angleData.page];
     meshRef.current.rotation.y -= Math.PI;
   }, [angleData, textures]);
-  const orientation = useMemo(() => ({ alpha: 0, beta: 0 }), []);
+  const orientation = useMemo(() => ({ gamma: 0, beta: 0 }), []);
   const handleOrientation = useCallback(
     (event: DeviceOrientationEvent) => {
       if (orbitControlRef.current) {
-        if (event.alpha) {
-          const diff = -((orientation.alpha - event.alpha) / 180) * Math.PI * 2;
+        if (event.gamma) {
+          const diff = -((orientation.gamma - event.gamma) / 180) * Math.PI * 2;
           orbitControlRef.current.setAzimuthalAngle(
             orbitControlRef.current.getAzimuthalAngle() + diff
           );
 
-          orientation.alpha = event.alpha;
+          orientation.gamma = event.gamma;
         }
         if (event.beta) {
           const newPolarAngle = (event.beta / 180) * Math.PI;
