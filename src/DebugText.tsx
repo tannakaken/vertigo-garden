@@ -10,7 +10,19 @@ const DebugText = () => {
     }
   }, []);
   useEffect(() => {
-    window.addEventListener("deviceorientation", handleOrientation);
+    // @ts-ignore
+    if (typeof DeviceOrientationEvent["requestPermission"] === "function") {
+      // @ts-ignore
+      DeviceOrientationEvent["requestPermission"]().then(
+        (permissionStatus: string) => {
+          if (permissionStatus === "granted") {
+            window.addEventListener("deviceorientation", handleOrientation);
+          }
+        }
+      );
+    } else {
+      window.addEventListener("deviceorientation", handleOrientation);
+    }
     return () => {
       window.removeEventListener("deviceorientation", handleOrientation);
     };
