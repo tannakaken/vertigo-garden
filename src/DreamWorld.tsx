@@ -201,7 +201,7 @@ const DreamWorld = () => {
           <BoxButton position={[2, 0, -10]} />
           <BoxButton position={[-2, 0, -10]} />
           <RingText text={text} />
-          <DebugText orientation={orientation} />
+          <DebugText />
           <mesh ref={meshRef} rotation={[0, 0, 0]}>
             <sphereBufferGeometry attach="geometry" args={[500, 60, 40]} />
             <meshBasicMaterial
