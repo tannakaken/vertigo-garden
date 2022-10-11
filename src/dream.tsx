@@ -76,26 +76,22 @@ const Dream = () => {
   const handleOrientation = useCallback(
     (event: DeviceOrientationEvent) => {
       if (orbitControlRef.current) {
-        // if (event.gamma) {
-        //   const diff = -((orientation.gamma - event.gamma) / 180) * Math.PI * 2;
-        //   orbitControlRef.current.setAzimuthalAngle(
-        //     orbitControlRef.current.getAzimuthalAngle() + diff
-        //   );
-        //   orientation.gamma = event.gamma;
-        // }
-        if (event.alpha) {
+        if (event.alpha && event.gamma) {
+          const diffAlpha = -((orientation.alpha - event.alpha) / 90) * Math.PI;
+          const diffGamma = -((orientation.gamma - event.alpha) / 90) * Math.PI;
+          orbitControlRef.current.setAzimuthalAngle(
+            orbitControlRef.current.getAzimuthalAngle() + diffAlpha + diffGamma
+          );
           orientation.alpha = event.alpha;
-        }
-        if (event.gamma) {
           orientation.gamma = event.gamma;
         }
         if (event.beta) {
-          // const newPolarAngle = (event.beta / 180) * Math.PI;
-          // orbitControlRef.current.setPolarAngle(newPolarAngle);
+          const newPolarAngle = (event.beta / 180) * Math.PI;
+          orbitControlRef.current.setPolarAngle(newPolarAngle);
 
           orientation.beta = event.beta;
         }
-        //orbitControlRef.current.update();
+        orbitControlRef.current.update();
       }
     },
     [orientation]
