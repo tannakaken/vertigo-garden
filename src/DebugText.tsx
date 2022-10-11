@@ -11,12 +11,11 @@ const DebugText = () => {
   }, []);
   useEffect(() => {
     // @ts-ignore
-    alert(DeviceOrientationEvent["requestPermission"]);
-    // @ts-ignore
     if (typeof DeviceOrientationEvent["requestPermission"] === "function") {
       // @ts-ignore
       DeviceOrientationEvent["requestPermission"]().then(
         (permissionStatus: string) => {
+          alert(permissionStatus);
           if (permissionStatus === "granted") {
             window.addEventListener("deviceorientation", handleOrientation);
           }
