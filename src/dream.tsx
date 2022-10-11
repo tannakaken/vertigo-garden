@@ -3,7 +3,7 @@ import "./App.css";
 import * as THREE from "three";
 import { VRButton, XR, Controllers, Hands } from "@react-three/xr";
 import { useLoader, Canvas } from "@react-three/fiber";
-import { OrbitControls } from "@react-three/drei";
+import { OrbitControls, DeviceOrientationControls } from "@react-three/drei";
 import BoxButton from "./box-button";
 import RingText from "./RingText";
 import type { OrbitControls as OrbitControlsImpl } from "three-stdlib";
@@ -78,6 +78,7 @@ const Dream = () => {
       <VRButton />
       <Canvas>
         <XR>
+          <DeviceOrientationControls />
           <OrbitControls
             ref={orbitControlRef}
             enableZoom={false}
