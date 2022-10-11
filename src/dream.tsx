@@ -112,7 +112,11 @@ const Dream = () => {
         VRモード
       </VRButton>
       <Canvas>
-        <XR>
+        <XR
+          onSessionStart={() => {
+            window.addEventListener("deviceorientation", handleOrientation);
+          }}
+        >
           <OrbitControls
             ref={orbitControlRef}
             enableZoom={false}
