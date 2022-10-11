@@ -12,9 +12,13 @@ const DebugText = ({
     setValue(
       `${orientation.alpha.toPrecision(2)}-${orientation.beta.toPrecision(
         2
-      )}-${orientation.gamma.toPrecision(2)}:${state.camera.rotation.x.toPrecision(2)}:${
-        state.camera.rotation.y.toPrecision(2)
-      }:${state.camera.rotation.z.toPrecision(2)}`
+      )}-${orientation.gamma.toPrecision(
+        2
+      )}:${state.camera.rotation.x.toPrecision(
+        2
+      )}:${state.camera.rotation.y.toPrecision(
+        2
+      )}:${state.camera.rotation.z.toPrecision(2)}`
     );
   });
   return (
@@ -22,6 +26,18 @@ const DebugText = ({
       <Text
         position={[0, 2, -8]}
         rotation={[0, 0, 0]}
+        font="./NotoSansJP-Regular.otf"
+        anchorX={"center"}
+        anchorY={"middle"}
+        fontSize={1}
+        strokeColor={"black"}
+        strokeWidth={0.01}
+      >
+        {value}
+      </Text>
+      <Text
+        position={[0, 2, +8]}
+        rotation={[0, Math.PI, 0]}
         font="./NotoSansJP-Regular.otf"
         anchorX={"center"}
         anchorY={"middle"}
