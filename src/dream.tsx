@@ -87,6 +87,7 @@ const Dream = () => {
         orbitControlRef.current.setAzimuthalAngle(
           orbitControlRef.current.getAzimuthalAngle() * diff
         );
+        orbitControlRef.current.update();
       }
     }
   }, []);
