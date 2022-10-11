@@ -7,7 +7,7 @@ import React, {
 } from "react";
 import "./App.css";
 import * as THREE from "three";
-import { VRButton, XR } from "@react-three/xr";
+import { Controllers, VRButton, XR } from "@react-three/xr";
 import { useLoader, Canvas } from "@react-three/fiber";
 import { OrbitControls } from "@react-three/drei";
 import BoxButton from "./box-button";
@@ -195,6 +195,7 @@ const Dream = () => {
               angleData.angle = newAngle;
             }}
           />
+          <Controllers />
           <ambientLight />
           <pointLight position={[10, 10, 10]} />
           <BoxButton position={[2, 0, -10]} />

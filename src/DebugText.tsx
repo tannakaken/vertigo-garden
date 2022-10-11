@@ -10,7 +10,7 @@ const DebugText = ({
 }) => {
   const gazeController = useController("none");
   const [value, setValue] = useState("0-0-0");
-  useFrame(() => {
+  useFrame((state) => {
     setValue(
       `${orientation.alpha.toPrecision(3)}-${orientation.beta.toPrecision(
         3

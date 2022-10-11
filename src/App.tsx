@@ -1,6 +1,6 @@
 import React, { Suspense } from "react";
 import "./App.css";
-import Dream from "./dream";
+import Dream from "./Dream";
 import Loading from "./Loading";
 
 function App() {
