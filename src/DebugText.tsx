@@ -5,12 +5,12 @@ import { useFrame } from "@react-three/fiber";
 const DebugText = ({
   orientation,
 }: {
-  orientation: { gamma: number; beta: number };
+  orientation: { alpha: number; beta: number };
 }) => {
   const [value, setValue] = useState("0-0");
   useFrame(() => {
     setValue(
-      `${orientation.gamma.toPrecision(3)}-${orientation.beta.toPrecision(3)}`
+      `${orientation.alpha.toPrecision(3)}-${orientation.beta.toPrecision(3)}`
     );
   });
   return (
