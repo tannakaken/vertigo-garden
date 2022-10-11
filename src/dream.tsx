@@ -1,4 +1,10 @@
-import React, { useCallback, useEffect, useMemo, useRef } from "react";
+import React, {
+  useCallback,
+  useEffect,
+  useMemo,
+  useRef,
+  useState,
+} from "react";
 import "./App.css";
 import * as THREE from "three";
 import { VRButton, XR } from "@react-three/xr";
@@ -72,10 +78,39 @@ const Dream = () => {
     materialRef.current.map = textures[angleData.page];
     meshRef.current.rotation.y -= Math.PI;
   }, [angleData, textures]);
-
+  const [value, setValue] = useState(0);
+  const handleOrientation = useCallback((event: DeviceOrientationEvent) => {
+    if (event.gamma) {
+      setValue(event.gamma);
+    }
+  }, []);
   return (
     <div style={{ height: "100vh" }}>
-      <VRButton />
+      <VRButton
+        onClick={() => {
+          if (
+            // @ts-ignore
+            typeof DeviceOrientationEvent["requestPermission"] === "function"
+          ) {
+            // @ts-ignore
+            DeviceOrientationEvent["requestPermission"]()
+              .then((permissionStatus: string) => {
+                alert(permissionStatus);
+                if (permissionStatus === "granted") {
+                  window.addEventListener(
+                    "deviceorientation",
+                    handleOrientation
+                  );
+                }
+              })
+              .catch((error: any) => alert(error));
+          } else {
+            window.addEventListener("deviceorientation", handleOrientation);
+          }
+        }}
+      >
+        VRモード
+      </VRButton>
       <Canvas>
         <XR>
           <OrbitControls
@@ -128,7 +163,7 @@ const Dream = () => {
           <BoxButton position={[2, 0, -10]} />
           <BoxButton position={[-2, 0, -10]} />
           <RingText text={text} />
-          <DebugText />
+          <DebugText value={value} />
           <mesh ref={meshRef} rotation={[0, 0, 0]}>
             <sphereBufferGeometry attach="geometry" args={[500, 60, 40]} />
             <meshBasicMaterial

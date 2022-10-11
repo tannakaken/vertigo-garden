@@ -2,32 +2,32 @@ import React, { useCallback, useEffect, useState } from "react";
 import { Text } from "@react-three/drei";
 import { useFrame } from "@react-three/fiber";
 
-const DebugText = () => {
-  const [value, setValue] = useState(0);
-  const handleOrientation = useCallback((event: DeviceOrientationEvent) => {
-    if (event.gamma) {
-      setValue(event.gamma);
-    }
-  }, []);
-  useEffect(() => {
-    // @ts-ignore
-    if (typeof DeviceOrientationEvent["requestPermission"] === "function") {
-      // @ts-ignore
-      DeviceOrientationEvent["requestPermission"]()
-        .then((permissionStatus: string) => {
-          alert(permissionStatus);
-          if (permissionStatus === "granted") {
-            window.addEventListener("deviceorientation", handleOrientation);
-          }
-        })
-        .catch((error: any) => alert(error));
-    } else {
-      window.addEventListener("deviceorientation", handleOrientation);
-    }
-    return () => {
-      window.removeEventListener("deviceorientation", handleOrientation);
-    };
-  }, [handleOrientation]);
+const DebugText = ({ value }: { value: number }) => {
+  // const [value, setValue] = useState(0);
+  // const handleOrientation = useCallback((event: DeviceOrientationEvent) => {
+  //   if (event.gamma) {
+  //     setValue(event.gamma);
+  //   }
+  // }, []);
+  // useEffect(() => {
+  //   // @ts-ignore
+  //   if (typeof DeviceOrientationEvent["requestPermission"] === "function") {
+  //     // @ts-ignore
+  //     DeviceOrientationEvent["requestPermission"]()
+  //       .then((permissionStatus: string) => {
+  //         alert(permissionStatus);
+  //         if (permissionStatus === "granted") {
+  //           window.addEventListener("deviceorientation", handleOrientation);
+  //         }
+  //       })
+  //       .catch((error: any) => alert(error));
+  //   } else {
+  //     window.addEventListener("deviceorientation", handleOrientation);
+  //   }
+  //   return () => {
+  //     window.removeEventListener("deviceorientation", handleOrientation);
+  //   };
+  // }, [handleOrientation]);
 
   // useFrame((state) => {
   //   setValue(state.camera.rotation.y);
