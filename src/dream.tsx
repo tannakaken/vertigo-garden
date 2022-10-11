@@ -85,10 +85,8 @@ const Dream = () => {
           orientation.alpha = event.alpha;
         }
         if (event.beta) {
-          const diff = ((orientation.beta - event.beta) / 180) * Math.PI;
-          orbitControlRef.current.setPolarAngle(
-            orbitControlRef.current.getPolarAngle() + diff
-          );
+          const newPolarAngle = ((event.beta - 90) / 180) * Math.PI;
+          orbitControlRef.current.setPolarAngle(newPolarAngle);
 
           orientation.beta = event.beta;
         }
