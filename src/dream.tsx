@@ -77,8 +77,9 @@ const Dream = () => {
     (event: DeviceOrientationEvent) => {
       if (orbitControlRef.current) {
         if (event.alpha && event.gamma) {
-          const diffAlpha = ((event.alpha - orientation.alpha) / 180) * Math.PI;
-          const diffGamma = ((event.gamma - orientation.gamma) / 180) * Math.PI;
+          // 正確に一回転にならないので微調整
+          const diffAlpha = ((event.alpha - orientation.alpha) / 120) * Math.PI;
+          const diffGamma = ((event.gamma - orientation.gamma) / 120) * Math.PI;
           orbitControlRef.current.setAzimuthalAngle(
             orbitControlRef.current.getAzimuthalAngle() + diffAlpha + diffGamma
           );
