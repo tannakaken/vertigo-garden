@@ -82,6 +82,12 @@ const Dream = () => {
   const handleOrientation = useCallback((event: DeviceOrientationEvent) => {
     if (event.alpha) {
       setValue(event.alpha);
+      if (orbitControlRef.current) {
+        const diff = ((value - event.alpha) / 180) * Math.PI;
+        orbitControlRef.current.setAzimuthalAngle(
+          orbitControlRef.current.getAzimuthalAngle() * diff
+        );
+      }
     }
   }, []);
   return (
@@ -113,12 +119,7 @@ const Dream = () => {
         VRモード
       </VRButton>
       <Canvas>
-        <XR
-          onSessionStart={() => {
-            alert("xr session start");
-            window.addEventListener("deviceorientation", handleOrientation);
-          }}
-        >
+        <XR>
           <OrbitControls
             ref={orbitControlRef}
             enableZoom={false}
