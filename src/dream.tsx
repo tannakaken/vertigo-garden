@@ -80,8 +80,8 @@ const Dream = () => {
   }, [angleData, textures]);
   const [value, setValue] = useState(0);
   const handleOrientation = useCallback((event: DeviceOrientationEvent) => {
-    if (event.gamma) {
-      setValue(event.gamma);
+    if (event.alpha) {
+      setValue(event.alpha);
     }
   }, []);
   return (
