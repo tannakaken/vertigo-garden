@@ -1,9 +1,9 @@
 import React, { useCallback, useEffect, useMemo, useRef } from "react";
 import "./App.css";
 import * as THREE from "three";
-import { VRButton, XR, Controllers, Hands } from "@react-three/xr";
+import { VRButton, XR } from "@react-three/xr";
 import { useLoader, Canvas } from "@react-three/fiber";
-import { OrbitControls, DeviceOrientationControls } from "@react-three/drei";
+import { DeviceOrientationControls, OrbitControls } from "@react-three/drei";
 import BoxButton from "./box-button";
 import RingText from "./RingText";
 import type { OrbitControls as OrbitControlsImpl } from "three-stdlib";
@@ -79,7 +79,7 @@ const Dream = () => {
       <Canvas>
         <XR>
           <DeviceOrientationControls />
-          <OrbitControls
+          {/* <OrbitControls
             ref={orbitControlRef}
             enableZoom={false}
             enablePan={false}
@@ -123,9 +123,7 @@ const Dream = () => {
               }
               angleData.angle = newAngle;
             }}
-          />
-          <Controllers />
-          <Hands />
+          /> */}
           <ambientLight />
           <pointLight position={[10, 10, 10]} />
           <BoxButton position={[2, 0, -10]} />
