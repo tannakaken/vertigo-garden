@@ -83,12 +83,12 @@ const Dream = () => {
           );
           orientation.alpha = event.alpha;
         }
-        if (event.beta) {
-          const newPolarAngle = (event.beta / 180) * Math.PI;
-          orbitControlRef.current.setPolarAngle(newPolarAngle);
+        // if (event.beta) {
+        //   const newPolarAngle = (event.beta / 180) * Math.PI;
+        //   orbitControlRef.current.setPolarAngle(newPolarAngle);
 
-          orientation.beta = event.beta;
-        }
+        //   orientation.beta = event.beta;
+        // }
         orbitControlRef.current.update();
       }
     },
