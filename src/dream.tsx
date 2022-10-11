@@ -105,6 +105,7 @@ const Dream = () => {
               })
               .catch((error: any) => alert(error));
           } else {
+            alert("no requestPermission");
             window.addEventListener("deviceorientation", handleOrientation);
           }
         }}
@@ -114,7 +115,7 @@ const Dream = () => {
       <Canvas>
         <XR
           onSessionStart={() => {
-            alert("hello");
+            alert("xr session start");
             window.addEventListener("deviceorientation", handleOrientation);
           }}
         >
