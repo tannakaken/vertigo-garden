@@ -1,8 +1,7 @@
 import React, { Suspense, useState } from "react";
 import { Text } from "@react-three/drei";
 import { useFrame } from "@react-three/fiber";
-import { useController, useXR } from "@react-three/xr";
-import { ZeroCurvatureEnding } from "three";
+import { useController } from "@react-three/xr";
 
 const DebugText = ({
   orientation,
