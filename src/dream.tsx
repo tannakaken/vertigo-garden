@@ -114,6 +114,7 @@ const Dream = () => {
       <Canvas>
         <XR
           onSessionStart={() => {
+            alert("hello");
             window.addEventListener("deviceorientation", handleOrientation);
           }}
         >
