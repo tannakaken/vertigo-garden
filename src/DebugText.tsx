@@ -9,7 +9,7 @@ const DebugText = () => {
       state.camera.matrix.elements[0],
       state.camera.matrix.elements[2]
     );
-    setValue(`${theta}`);
+    setValue(`${theta.toPrecision(2)}`);
   });
   return (
     <Suspense fallback={null}>
@@ -26,8 +26,32 @@ const DebugText = () => {
         {value}
       </Text>
       <Text
+        position={[-8, 2, 0]}
+        rotation={[0, Math.PI / 2, 0]}
+        font="./NotoSansJP-Regular.otf"
+        anchorX={"center"}
+        anchorY={"middle"}
+        fontSize={1}
+        strokeColor={"black"}
+        strokeWidth={0.01}
+      >
+        {value}
+      </Text>
+      <Text
         position={[0, 2, +8]}
         rotation={[0, Math.PI, 0]}
+        font="./NotoSansJP-Regular.otf"
+        anchorX={"center"}
+        anchorY={"middle"}
+        fontSize={1}
+        strokeColor={"black"}
+        strokeWidth={0.01}
+      >
+        {value}
+      </Text>
+      <Text
+        position={[8, 2, 0]}
+        rotation={[0, -Math.PI / 2, 0]}
         font="./NotoSansJP-Regular.otf"
         anchorX={"center"}
         anchorY={"middle"}
