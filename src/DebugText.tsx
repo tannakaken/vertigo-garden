@@ -1,18 +1,21 @@
 import React, { Suspense, useState } from "react";
 import { Text } from "@react-three/drei";
 import { useFrame } from "@react-three/fiber";
+import { useController, useXR } from "@react-three/xr";
+import { ZeroCurvatureEnding } from "three";
 
 const DebugText = ({
   orientation,
 }: {
   orientation: { alpha: number; beta: number; gamma: number };
 }) => {
+  const gazeController = useController("none");
   const [value, setValue] = useState("0-0-0");
   useFrame(() => {
     setValue(
       `${orientation.alpha.toPrecision(3)}-${orientation.beta.toPrecision(
         3
-      )}-${orientation.gamma.toPrecision(3)}`
+      )}-${orientation.gamma.toPrecision(3)}:${gazeController}`
     );
   });
   return (
