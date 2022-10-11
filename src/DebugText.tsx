@@ -1,9 +1,20 @@
-import React, { useState } from "react";
+import React, { useCallback, useEffect, useState } from "react";
 import { Text } from "@react-three/drei";
 import { useFrame } from "@react-three/fiber";
 
 const DebugText = () => {
   const [value, setValue] = useState(0);
+  const handleOrientation = useCallback((event: DeviceOrientationEvent) => {
+    if (event.gamma) {
+      setValue(event.gamma);
+    }
+  }, []);
+  useEffect(() => {
+    window.addEventListener("deviceorientation", handleOrientation);
+    return () => {
+      window.removeEventListener("deviceorientation", handleOrientation);
+    };
+  }, [handleOrientation]);
 
   useFrame((state) => {
     setValue(state.camera.rotation.y);
