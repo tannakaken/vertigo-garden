@@ -3,7 +3,7 @@ import { Text } from "@react-three/drei";
 import { useFrame } from "@react-three/fiber";
 
 const DebugText = () => {
-  const [value, setValue] = useState("0-0-0");
+  const [value, setValue] = useState("");
   useFrame((state) => {
     const theta = Math.atan2(
       state.camera.matrix.elements[0],

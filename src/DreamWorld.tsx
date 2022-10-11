@@ -10,10 +10,8 @@ import * as THREE from "three";
 import { Controllers, VRButton, XR } from "@react-three/xr";
 import { useLoader, Canvas } from "@react-three/fiber";
 import { OrbitControls } from "@react-three/drei";
-import BoxButton from "./box-button";
 import RingText from "./RingText";
 import type { OrbitControls as OrbitControlsImpl } from "three-stdlib";
-import DebugText from "./DebugText";
 
 const text =
   "おはようございます。あなたは今ここにいますか？　もしそこにいるなら、そこがどこか私に教えてくれませんか？";
@@ -157,37 +155,39 @@ const DreamWorld = () => {
             enableDamping
             reverseOrbit
             dampingFactor={0.2}
-            onChange={() => {
-              if (!orbitControlRef.current) {
-                return;
-              }
-              const newAngle = orbitControlRef.current.getAzimuthalAngle();
+          />
+          <Controllers />
+          <ambientLight />
+          <pointLight position={[10, 10, 10]} />
+          <RingText
+            text={text}
+            onRotate={(newAngle) => {
               const oldAngle = angleData.angle;
               if (
                 angleData.page % 2 === 0 &&
-                oldAngle < -Math.PI / 2 &&
-                newAngle > Math.PI / 2 &&
-                newAngle - oldAngle >= 1.0
-              ) {
-                setNextPage();
-              } else if (
-                angleData.page % 2 === 1 &&
-                oldAngle > 0 &&
-                newAngle < 0 &&
+                oldAngle > -Math.PI / 2 &&
+                newAngle < -Math.PI / 2 &&
                 oldAngle - newAngle < 1.0
               ) {
                 setNextPage();
               } else if (
                 angleData.page % 2 === 1 &&
                 oldAngle > Math.PI / 2 &&
-                newAngle < -Math.PI / 2 &&
-                oldAngle - newAngle >= 1.0
+                newAngle < Math.PI / 2 &&
+                oldAngle - newAngle < 1.0
+              ) {
+                setNextPage();
+              } else if (
+                angleData.page % 2 === 1 &&
+                oldAngle < -Math.PI / 2 &&
+                newAngle > -Math.PI / 2 &&
+                newAngle - oldAngle < 1.0
               ) {
                 setPreviousPage();
               } else if (
                 angleData.page % 2 === 0 &&
-                oldAngle < 0 &&
-                newAngle > 0 &&
+                oldAngle < Math.PI / 2 &&
+                newAngle > Math.PI / 2 &&
                 newAngle - oldAngle < 1.0
               ) {
                 setPreviousPage();
@@ -195,13 +195,6 @@ const DreamWorld = () => {
               angleData.angle = newAngle;
             }}
           />
-          <Controllers />
-          <ambientLight />
-          <pointLight position={[10, 10, 10]} />
-          <BoxButton position={[2, 0, -10]} />
-          <BoxButton position={[-2, 0, -10]} />
-          <RingText text={text} />
-          <DebugText />
           <mesh ref={meshRef} rotation={[0, 0, 0]}>
             <sphereBufferGeometry attach="geometry" args={[500, 60, 40]} />
             <meshBasicMaterial

@@ -1,14 +1,23 @@
 import React, { Suspense } from "react";
 import { Text } from "@react-three/drei";
+import { useFrame } from "@react-three/fiber";
 
 type Props = {
   text: String;
+  onRotate: (newAngle: number) => void;
 };
 
 const period = 60;
 
 const RingText = (props: Props) => {
   const characters = Array.from(props.text);
+  useFrame((state) => {
+    const newAngle = Math.atan2(
+      state.camera.matrix.elements[0],
+      state.camera.matrix.elements[2]
+    );
+    props.onRotate(newAngle);
+  });
   return (
     <Suspense fallback={null}>
       <group>
