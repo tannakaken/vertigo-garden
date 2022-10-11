@@ -1,4 +1,4 @@
-import React, { Suspense, useRef } from "react";
+import React, { Suspense, useRef, useState } from "react";
 import { Text } from "@react-three/drei";
 import { useFrame } from "@react-three/fiber";
 
@@ -7,18 +7,15 @@ const DebugText = ({
 }: {
   orientation: { alpha: number; beta: number };
 }) => {
-  const textRef = useRef<Text>(null);
+  const [value, setValue] = useState("0-0");
   useFrame(() => {
-    if (textRef.current) {
-      textRef.current.textContent = `${orientation.alpha.toPrecision(
-        3
-      )}-${orientation.beta.toPrecision(3)}`;
-    }
+    setValue(
+      `${orientation.alpha.toPrecision(3)}-${orientation.beta.toPrecision(3)}`
+    );
   });
   return (
     <Suspense fallback={null}>
       <Text
-        ref={textRef}
         position={[0, 2, -8]}
         rotation={[0, 0, 0]}
         font="./NotoSansJP-Regular.otf"
@@ -28,7 +25,7 @@ const DebugText = ({
         strokeColor={"black"}
         strokeWidth={0.01}
       >
-        0-0
+        {value}
       </Text>
     </Suspense>
   );
