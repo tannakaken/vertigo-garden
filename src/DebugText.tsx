@@ -6,7 +6,37 @@ const DebugText = () => {
   const [value, setValue] = useState("0-0-0");
   useFrame((state) => {
     setValue(
-      `${state.camera.matrix.elements[0]},${state.camera.matrix.elements[1]},${state.camera.matrix.elements[2]},${state.camera.matrix.elements[3]}\n${state.camera.matrix.elements[4]},${state.camera.matrix.elements[5]},${state.camera.matrix.elements[6]},${state.camera.matrix.elements[7]}\n${state.camera.matrix.elements[8]},${state.camera.matrix.elements[9]},${state.camera.matrix.elements[10]},${state.camera.matrix.elements[11]}\n${state.camera.matrix.elements[12]},${state.camera.matrix.elements[13]},${state.camera.matrix.elements[14]},${state.camera.matrix.elements[15]}`
+      `${state.camera.matrix.elements[0].toPrecision(
+        2
+      )},${state.camera.matrix.elements[1].toPrecision(
+        2
+      )},${state.camera.matrix.elements[2].toPrecision(
+        2
+      )},${state.camera.matrix.elements[3].toPrecision(
+        2
+      )}\n${state.camera.matrix.elements[4].toPrecision(
+        2
+      )},${state.camera.matrix.elements[5].toPrecision(
+        2
+      )},${state.camera.matrix.elements[6].toPrecision(
+        2
+      )},${state.camera.matrix.elements[7].toPrecision(
+        2
+      )}\n${state.camera.matrix.elements[8].toPrecision(
+        2
+      )},${state.camera.matrix.elements[9].toPrecision(
+        2
+      )},${state.camera.matrix.elements[10].toPrecision(
+        2
+      )},${state.camera.matrix.elements[11].toPrecision(
+        2
+      )}\n${state.camera.matrix.elements[12].toPrecision(
+        2
+      )},${state.camera.matrix.elements[13].toPrecision(
+        2
+      )},${state.camera.matrix.elements[14].toPrecision(
+        2
+      )},${state.camera.matrix.elements[15].toPrecision(2)}`
     );
   });
   return (
