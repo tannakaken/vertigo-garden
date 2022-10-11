@@ -1,4 +1,4 @@
-import React, { useCallback, useEffect, useState } from "react";
+import React, { Suspense, useRef } from "react";
 import { Text } from "@react-three/drei";
 import { useFrame } from "@react-three/fiber";
 
@@ -7,48 +7,30 @@ const DebugText = ({
 }: {
   orientation: { alpha: number; beta: number };
 }) => {
-  // const [value, setValue] = useState(0);
-  // const handleOrientation = useCallback((event: DeviceOrientationEvent) => {
-  //   if (event.gamma) {
-  //     setValue(event.gamma);
-  //   }
-  // }, []);
-  // useEffect(() => {
-  //   // @ts-ignore
-  //   if (typeof DeviceOrientationEvent["requestPermission"] === "function") {
-  //     // @ts-ignore
-  //     DeviceOrientationEvent["requestPermission"]()
-  //       .then((permissionStatus: string) => {
-  //         alert(permissionStatus);
-  //         if (permissionStatus === "granted") {
-  //           window.addEventListener("deviceorientation", handleOrientation);
-  //         }
-  //       })
-  //       .catch((error: any) => alert(error));
-  //   } else {
-  //     window.addEventListener("deviceorientation", handleOrientation);
-  //   }
-  //   return () => {
-  //     window.removeEventListener("deviceorientation", handleOrientation);
-  //   };
-  // }, [handleOrientation]);
-
-  // useFrame((state) => {
-  //   setValue(state.camera.rotation.y);
-  // });
+  const textRef = useRef<Text>(null);
+  useFrame(() => {
+    if (textRef.current) {
+      textRef.current.textContent = `${orientation.alpha.toPrecision(
+        3
+      )}-${orientation.beta.toPrecision(3)}`;
+    }
+  });
   return (
-    <Text
-      position={[0, 2, -8]}
-      rotation={[0, 0, 0]}
-      font="./NotoSansJP-Regular.otf"
-      anchorX={"center"}
-      anchorY={"middle"}
-      fontSize={1}
-      strokeColor={"black"}
-      strokeWidth={0.01}
-    >
-      {orientation.alpha.toPrecision(3)}-{orientation.beta.toPrecision(3)}
-    </Text>
+    <Suspense fallback={null}>
+      <Text
+        ref={textRef}
+        position={[0, 2, -8]}
+        rotation={[0, 0, 0]}
+        font="./NotoSansJP-Regular.otf"
+        anchorX={"center"}
+        anchorY={"middle"}
+        fontSize={1}
+        strokeColor={"black"}
+        strokeWidth={0.01}
+      >
+        0-0
+      </Text>
+    </Suspense>
   );
 };
 
