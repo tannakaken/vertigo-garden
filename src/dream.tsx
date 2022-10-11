@@ -99,7 +99,22 @@ const Dream = () => {
   );
   return (
     <div style={{ height: "100vh" }}>
-      <VRButton
+      <VRButton className="desktop" />
+      <button
+        className="mobile"
+        style={{
+          position: "absolute",
+          left: "50%",
+          bottom: "24px",
+          transform: "translateX(-50%)",
+          zIndex: 100,
+          background: "transparent",
+          color: "white",
+          border: "1px solid white",
+          borderRadius: "4px",
+          padding: "12px 24px",
+          cursor: "pointer",
+        }}
         onClick={() => {
           if (
             // @ts-ignore
@@ -108,7 +123,6 @@ const Dream = () => {
             // @ts-ignore
             DeviceOrientationEvent["requestPermission"]()
               .then((permissionStatus: string) => {
-                alert(permissionStatus);
                 if (permissionStatus === "granted") {
                   window.addEventListener(
                     "deviceorientation",
@@ -116,15 +130,14 @@ const Dream = () => {
                   );
                 }
               })
-              .catch((error: any) => alert(error));
+              .catch((error: any) => console.error(error));
           } else {
-            alert("no requestPermission");
             window.addEventListener("deviceorientation", handleOrientation);
           }
         }}
       >
-        VRモード
-      </VRButton>
+        窓
+      </button>
       <Canvas>
         <XR>
           <OrbitControls
