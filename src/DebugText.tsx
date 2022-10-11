@@ -1,7 +1,6 @@
 import React, { Suspense, useState } from "react";
 import { Text } from "@react-three/drei";
 import { useFrame } from "@react-three/fiber";
-import { useController } from "@react-three/xr";
 
 const DebugText = ({
   orientation,
@@ -11,9 +10,11 @@ const DebugText = ({
   const [value, setValue] = useState("0-0-0");
   useFrame((state) => {
     setValue(
-      `${orientation.alpha.toPrecision(3)}-${orientation.beta.toPrecision(
-        3
-      )}-${orientation.gamma.toPrecision(3)}:${state.camera.rotation}`
+      `${orientation.alpha.toPrecision(2)}-${orientation.beta.toPrecision(
+        2
+      )}-${orientation.gamma.toPrecision(2)}:${state.camera.rotation.x.toPrecision(2)}:${
+        state.camera.rotation.y.toPrecision(2)
+      }:${state.camera.rotation.z.toPrecision(2)}`
     );
   });
   return (
