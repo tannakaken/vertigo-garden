@@ -5,7 +5,9 @@ import { useFrame } from "@react-three/fiber";
 const DebugText = () => {
   const [value, setValue] = useState("0-0-0");
   useFrame((state) => {
-    setValue(`${state.camera.matrix.elements}`);
+    setValue(
+      `${state.camera.matrix.elements[0]},${state.camera.matrix.elements[1]},${state.camera.matrix.elements[2]},${state.camera.matrix.elements[3]}\n${state.camera.matrix.elements[4]},${state.camera.matrix.elements[5]},${state.camera.matrix.elements[6]},${state.camera.matrix.elements[7]}\n${state.camera.matrix.elements[8]},${state.camera.matrix.elements[9]},${state.camera.matrix.elements[10]},${state.camera.matrix.elements[11]}\n${state.camera.matrix.elements[12]},${state.camera.matrix.elements[13]},${state.camera.matrix.elements[14]},${state.camera.matrix.elements[15]}`
+    );
   });
   return (
     <Suspense fallback={null}>
