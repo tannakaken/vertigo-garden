@@ -78,19 +78,22 @@ const Dream = () => {
     materialRef.current.map = textures[angleData.page];
     meshRef.current.rotation.y -= Math.PI;
   }, [angleData, textures]);
-  const [value, setValue] = useState(0);
-  const handleOrientation = useCallback((event: DeviceOrientationEvent) => {
-    if (event.alpha) {
-      setValue(event.alpha);
-      if (orbitControlRef.current) {
-        const diff = ((value - event.alpha) / 180) * Math.PI;
-        orbitControlRef.current.setAzimuthalAngle(
-          orbitControlRef.current.getAzimuthalAngle() + diff
-        );
-        orbitControlRef.current.update();
+  const orientation = useMemo(() => ({ angle: 0 }), []);
+  const handleOrientation = useCallback(
+    (event: DeviceOrientationEvent) => {
+      if (event.alpha) {
+        if (orbitControlRef.current) {
+          const diff = ((orientation.angle - event.alpha) / 180) * Math.PI;
+          orbitControlRef.current.setAzimuthalAngle(
+            orbitControlRef.current.getAzimuthalAngle() + diff
+          );
+          orbitControlRef.current.update();
+        }
+        orientation.angle = event.alpha;
       }
-    }
-  }, []);
+    },
+    [orientation]
+  );
   return (
     <div style={{ height: "100vh" }}>
       <VRButton
@@ -171,7 +174,7 @@ const Dream = () => {
           <BoxButton position={[2, 0, -10]} />
           <BoxButton position={[-2, 0, -10]} />
           <RingText text={text} />
-          <DebugText value={value} />
+          <DebugText orientation={orientation} />
           <mesh ref={meshRef} rotation={[0, 0, 0]}>
             <sphereBufferGeometry attach="geometry" args={[500, 60, 40]} />
             <meshBasicMaterial

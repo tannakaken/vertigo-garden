@@ -2,7 +2,7 @@ import React, { useCallback, useEffect, useState } from "react";
 import { Text } from "@react-three/drei";
 import { useFrame } from "@react-three/fiber";
 
-const DebugText = ({ value }: { value: number }) => {
+const DebugText = ({ orientation }: { orientation: { angle: number } }) => {
   // const [value, setValue] = useState(0);
   // const handleOrientation = useCallback((event: DeviceOrientationEvent) => {
   //   if (event.gamma) {
@@ -43,7 +43,7 @@ const DebugText = ({ value }: { value: number }) => {
       strokeColor={"black"}
       strokeWidth={0.01}
     >
-      {value.toPrecision(3)}
+      {orientation.angle.toPrecision(3)}
     </Text>
   );
 };
