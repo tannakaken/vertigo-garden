@@ -1,4 +1,10 @@
-import React, { useCallback, useEffect, useMemo, useRef } from "react";
+import React, {
+  useCallback,
+  useEffect,
+  useMemo,
+  useRef,
+  useState,
+} from "react";
 import "./App.css";
 import * as THREE from "three";
 import { VRButton, XR } from "@react-three/xr";
@@ -97,47 +103,51 @@ const Dream = () => {
     },
     [orientation]
   );
+  const [windowMode, setWindowMode] = useState(false);
   return (
     <div style={{ height: "100vh" }}>
       <VRButton className="desktop" />
-      <button
-        className="mobile"
-        style={{
-          position: "absolute",
-          left: "50%",
-          bottom: "24px",
-          transform: "translateX(-50%)",
-          zIndex: 100,
-          background: "transparent",
-          color: "white",
-          border: "1px solid white",
-          borderRadius: "4px",
-          padding: "12px 24px",
-          cursor: "pointer",
-        }}
-        onClick={() => {
-          if (
-            // @ts-ignore
-            typeof DeviceOrientationEvent["requestPermission"] === "function"
-          ) {
-            // @ts-ignore
-            DeviceOrientationEvent["requestPermission"]()
-              .then((permissionStatus: string) => {
-                if (permissionStatus === "granted") {
-                  window.addEventListener(
-                    "deviceorientation",
-                    handleOrientation
-                  );
-                }
-              })
-              .catch((error: any) => console.error(error));
-          } else {
-            window.addEventListener("deviceorientation", handleOrientation);
-          }
-        }}
-      >
-        あちらへの窓
-      </button>
+      {!windowMode && (
+        <button
+          className="mobile"
+          style={{
+            position: "absolute",
+            left: "50%",
+            bottom: "24px",
+            transform: "translateX(-50%)",
+            zIndex: 100,
+            background: "transparent",
+            color: "white",
+            border: "1px solid white",
+            borderRadius: "4px",
+            padding: "12px 24px",
+            cursor: "pointer",
+          }}
+          onClick={() => {
+            if (
+              // @ts-ignore
+              typeof DeviceOrientationEvent["requestPermission"] === "function"
+            ) {
+              // @ts-ignore
+              DeviceOrientationEvent["requestPermission"]()
+                .then((permissionStatus: string) => {
+                  if (permissionStatus === "granted") {
+                    window.addEventListener(
+                      "deviceorientation",
+                      handleOrientation
+                    );
+                  }
+                })
+                .catch((error: any) => console.error(error));
+            } else {
+              window.addEventListener("deviceorientation", handleOrientation);
+            }
+            setWindowMode(true);
+          }}
+        >
+          あちらへの窓
+        </button>
+      )}
       <Canvas>
         <XR>
           <OrbitControls
