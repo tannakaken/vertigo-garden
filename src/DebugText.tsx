@@ -16,9 +16,9 @@ const DebugText = () => {
     };
   }, [handleOrientation]);
 
-  useFrame((state) => {
-    setValue(state.camera.rotation.y);
-  });
+  // useFrame((state) => {
+  //   setValue(state.camera.rotation.y);
+  // });
   return (
     <Text
       position={[0, 2, -8]}
