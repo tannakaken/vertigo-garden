@@ -5,15 +5,11 @@ import { useFrame } from "@react-three/fiber";
 const DebugText = () => {
   const [value, setValue] = useState("0-0-0");
   useFrame((state) => {
-    setValue(
-      `${state.camera.matrix.elements[0].toPrecision(
-        2
-      )},${state.camera.matrix.elements[2].toPrecision(
-        2
-      )}\n${state.camera.matrix.elements[8].toPrecision(
-        2
-      )},${state.camera.matrix.elements[10].toPrecision(2)}`
+    const theta = Math.atan2(
+      state.camera.matrix.elements[0],
+      state.camera.matrix.elements[2]
     );
+    setValue(`${theta}`);
   });
   return (
     <Suspense fallback={null}>
