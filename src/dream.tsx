@@ -85,7 +85,7 @@ const Dream = () => {
       if (orbitControlRef.current) {
         const diff = ((value - event.alpha) / 180) * Math.PI;
         orbitControlRef.current.setAzimuthalAngle(
-          orbitControlRef.current.getAzimuthalAngle() * diff
+          orbitControlRef.current.getAzimuthalAngle() + diff
         );
         orbitControlRef.current.update();
       }
