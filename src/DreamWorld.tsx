@@ -323,7 +323,7 @@ const DreamWorld = () => {
             />
           </mesh>
           {showModal && (
-            <Html position={[-1.5, 1, 0]}>
+            <Html position={[-1.5, 2, 0]}>
               <div
                 style={{
                   backgroundColor: "white",

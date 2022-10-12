@@ -31,13 +31,16 @@ const BoxButton = ({
       onBlur={() => {
         setSpeed(0.01);
       }}
+      onSelect={() => {
+        onClick();
+      }}
     >
       <mesh
         position={position}
         scale={0.5}
         rotation={[0, Math.PI / 4, Math.PI / 2]}
         ref={ref}
-        onClick={() => onClick?.()}
+        onClick={() => onClick()}
         onPointerOver={() => setSpeed(0.03)}
         onPointerOut={() => setSpeed(0.01)}
       >
