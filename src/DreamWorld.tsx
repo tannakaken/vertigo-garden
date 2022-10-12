@@ -9,11 +9,13 @@ import "./App.css";
 import * as THREE from "three";
 import { Controllers, Hands, VRButton, XR } from "@react-three/xr";
 import { useLoader, Canvas } from "@react-three/fiber";
-import { Html, OrbitControls } from "@react-three/drei";
+import { OrbitControls } from "@react-three/drei";
 import RingText from "./RingText";
 import type { OrbitControls as OrbitControlsImpl } from "three-stdlib";
 import DebugText from "./DebugText";
 import BoxButton from "./BoxButton";
+import NotoText from "./NotoText";
+import TextButton from "./TextButton";
 
 const debug = false;
 
@@ -323,32 +325,67 @@ const DreamWorld = () => {
             />
           </mesh>
           {showModal && (
-            <Html position={[-1.5, 3, 0]}>
-              <div
-                style={{
-                  backgroundColor: "white",
-                  padding: "10px",
-                  width: "300px",
+            <group>
+              <mesh
+                position={[0, 0, -5.1]}
+                rotation={[0, 0, 0]}
+                scale={[12, 5, 5]}
+              >
+                <planeBufferGeometry />
+                <meshBasicMaterial color="white" />
+              </mesh>
+              <NotoText position={[0, 2, -5]} anchorX={"center"} fontSize={1}>
+                目眩の花園
+              </NotoText>
+              <NotoText position={[-5, 1, -5]}>作者：</NotoText>
+              <TextButton
+                position={[-4.1, 1, -5]}
+                onClick={() => {
+                  window.open("https://tannakaken.xyz/");
                 }}
               >
-                <h2>目眩の花園</h2>
-                <p>
-                  作者：<a href="https://tannakaken.xyz">淡中圏</a>（
-                  <a href="https://twitter.com/tannakaken">@tannakaken</a>）
-                </p>
-                <p>
-                  巻物について考えてたらこの作品のアイディアを思いつきました。
-                </p>
-                <p>もう一つの福永信の『アクロバット前夜』です。</p>
-                <p>背景はStable Diffusionを使って生成しました。</p>
-                <p>
-                  背景生成のColabのコードやwebページ自体のソースコードは
-                  <a href="https://github.com/tannakaken/vr-z-novel">github</a>
-                  にあります。
-                </p>
-                <button onClick={() => setShowModal(false)}>close</button>
-              </div>
-            </Html>
+                淡中圏
+              </TextButton>
+              <NotoText position={[-3.2, 1, -5]}>（</NotoText>
+              <TextButton
+                position={[-2.9, 1, -5]}
+                onClick={() => {
+                  window.open("https://twitter.com/tannakaken/");
+                }}
+              >
+                @tannakaken
+              </TextButton>
+              <NotoText position={[-0.9, 1, -5]}>）</NotoText>
+              <NotoText position={[-5, 0.4, -5]}>
+                巻物について考えてたらこの作品のアイディアを思いつきました。
+              </NotoText>
+              <NotoText position={[-5, -0.2, -5]}>
+                もう一つの福永信の『アクロバット前夜』です。
+              </NotoText>
+              <NotoText position={[-5, -0.8, -5]}>
+                背景はStable Diffusionを使って生成しました。
+              </NotoText>
+              <NotoText position={[-5, -1.4, -5]}>
+                背景生成のColabのコードやwebページ自体のソースコードは
+              </NotoText>
+              <TextButton
+                position={[3.3, -1.4, -5]}
+                onClick={() => {
+                  window.open("https://github.com/tannakaken/vr-z-novel");
+                }}
+              >
+                github
+              </TextButton>
+              <NotoText position={[4.2, -1.4, -5]}>にあります。</NotoText>
+              <TextButton
+                position={[-4.8, -2.0, -5]}
+                onClick={() => {
+                  setShowModal(false);
+                }}
+              >
+                閉じる
+              </TextButton>
+            </group>
           )}
         </XR>
       </Canvas>

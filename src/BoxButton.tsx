@@ -33,7 +33,6 @@ const BoxButton = ({
       }}
       onSelect={() => {
         onClick();
-        setSpeed(0.05);
       }}
     >
       <mesh
@@ -46,11 +45,7 @@ const BoxButton = ({
         onPointerOut={() => setSpeed(0.01)}
       >
         <boxGeometry />
-        <meshStandardMaterial
-          color={
-            speed === 0.05 ? "lightblue" : speed === 0.03 ? "hotpink" : "orange"
-          }
-        />
+        <meshStandardMaterial color={speed === 0.03 ? "hotpink" : "orange"} />
       </mesh>
     </Interactive>
   );
