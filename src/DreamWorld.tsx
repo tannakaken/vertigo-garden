@@ -357,10 +357,10 @@ const DreamWorld = () => {
               </TextButton>
               <NotoText position={[-0.9, 1, -5]}>）</NotoText>
               <NotoText position={[-5, 0.4, -5]}>
-                巻物について考えてたらこの作品のアイディアを思いつきました。
+                巻物について考えていたらこの作品のアイディアを思いつきました。
               </NotoText>
               <NotoText position={[-5, -0.2, -5]}>
-                もう一つの福永信の『アクロバット前夜』です。
+                もう一つの発想の元は福永信の『アクロバット前夜』です。
               </NotoText>
               <NotoText position={[-5, -0.8, -5]}>
                 背景はStable Diffusionを使って生成しました。
