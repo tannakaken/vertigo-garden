@@ -9,10 +9,11 @@ import "./App.css";
 import * as THREE from "three";
 import { Hands, VRButton, XR } from "@react-three/xr";
 import { useLoader, Canvas } from "@react-three/fiber";
-import { OrbitControls } from "@react-three/drei";
+import { Html, OrbitControls } from "@react-three/drei";
 import RingText from "./RingText";
 import type { OrbitControls as OrbitControlsImpl } from "three-stdlib";
 import DebugText from "./DebugText";
+import BoxButton from "./BoxButton";
 
 const debug = false;
 
@@ -111,9 +112,10 @@ const DreamWorld = () => {
     [orientation]
   );
   const [windowMode, setWindowMode] = useState(false);
+  const [showModal, setShowModal] = useState(false);
 
   const setNextTextPage = useCallback(() => {
-    if (textPage > 25) {
+    if (textPage > 26) {
       return;
     }
     const newText = allText.substring((textPage - 1) * 15, (textPage + 3) * 15);
@@ -123,7 +125,6 @@ const DreamWorld = () => {
       newOffset = ((textPage - 1) % 4) * 15;
       setOffset(newOffset);
     }
-    console.warn("next", textPage + 1, newText, newOffset);
     setTextPage(textPage + 1);
   }, [textPage, offset]);
   const setPreviousTextPage = useCallback(() => {
@@ -141,7 +142,6 @@ const DreamWorld = () => {
       newOffset = ((previousTextPage - 2) % 4) * 15;
       setOffset(newOffset);
     }
-    console.warn("previous", previousTextPage, newText, newOffset);
     setTextPage(previousTextPage);
   }, [textPage, offset]);
   return (
@@ -213,7 +213,6 @@ const DreamWorld = () => {
                 newAngle <= 0 &&
                 oldAngle - newAngle < 1.0
               ) {
-                console.warn("angle 0", oldAngle, newAngle);
                 setNextTextPage();
               } else if (
                 (textPage + 4) % 4 === 1 &&
@@ -221,7 +220,6 @@ const DreamWorld = () => {
                 newAngle <= -Math.PI / 2 &&
                 oldAngle - newAngle < 1.0
               ) {
-                console.warn("angle -Math.PI / 2", oldAngle, newAngle);
                 setNextTextPage();
               } else if (
                 (textPage + 4) % 4 === 2 &&
@@ -229,7 +227,6 @@ const DreamWorld = () => {
                 newAngle <= Math.PI &&
                 newAngle - oldAngle > 3.0
               ) {
-                console.warn("angle Math.PI", oldAngle, newAngle);
                 setNextTextPage();
               } else if (
                 (textPage + 4) % 4 === 3 &&
@@ -237,7 +234,6 @@ const DreamWorld = () => {
                 newAngle <= Math.PI / 2 &&
                 oldAngle - newAngle < 1.0
               ) {
-                console.warn("angle Math.PI / 2", oldAngle, newAngle);
                 setNextTextPage();
               } else if (
                 (textPage + 4) % 4 === 1 &&
@@ -245,7 +241,6 @@ const DreamWorld = () => {
                 newAngle > 0 &&
                 newAngle - oldAngle < 1.0
               ) {
-                console.warn("angle 0", oldAngle, newAngle);
                 setPreviousTextPage();
               } else if (
                 (textPage + 4) % 4 === 2 &&
@@ -253,7 +248,6 @@ const DreamWorld = () => {
                 newAngle > -Math.PI / 2 &&
                 newAngle - oldAngle < 1.0
               ) {
-                console.warn("angle Math.PI / 2 ", oldAngle, newAngle);
                 setPreviousTextPage();
               } else if (
                 (textPage + 4) % 4 === 3 &&
@@ -261,7 +255,6 @@ const DreamWorld = () => {
                 oldAngle > -Math.PI &&
                 oldAngle - newAngle > 3.0
               ) {
-                console.warn("angle Math.PI", oldAngle, newAngle);
                 setPreviousTextPage();
               } else if (
                 textPage % 4 === 0 &&
@@ -269,7 +262,6 @@ const DreamWorld = () => {
                 newAngle > Math.PI / 2 &&
                 newAngle - oldAngle < 1.0
               ) {
-                console.warn("angle Math.PI / 2 ", oldAngle, newAngle);
                 setPreviousTextPage();
               }
 
@@ -311,6 +303,15 @@ const DreamWorld = () => {
               text={`${textPage}:${offset}:${pageData.backgroundPage}`}
             />
           )}
+          <BoxButton
+            position={[0, 1, -8]}
+            onClick={() => {
+              setShowModal(true);
+            }}
+            show={
+              pageData.backgroundPage === 0 || pageData.backgroundPage >= 11
+            }
+          />
           <mesh ref={meshRef} rotation={[0, 0, 0]}>
             <sphereBufferGeometry attach="geometry" args={[500, 60, 40]} />
             <meshBasicMaterial
@@ -320,6 +321,33 @@ const DreamWorld = () => {
               side={THREE.BackSide}
             />
           </mesh>
+          {showModal && (
+            <Html position={[-1.5, 1, 0]}>
+              <div
+                style={{
+                  backgroundColor: "white",
+                  padding: "10px",
+                  width: "300px",
+                }}
+              >
+                <h2>目眩の花園</h2>
+                <p>
+                  作者：<a href="https://tannakaken.xyz">淡中圏</a>（
+                  <a href="https://twitter.com/tannakaken">@tannakaken</a>）
+                </p>
+                <p>
+                  巻物について考えてたらこの作品のアイディアを思いつきました。
+                </p>
+                <p>背景はStable Diffusionを使って生成しました。</p>
+                <p>
+                  背景生成のColabのコードやwebページ自体のソースコードは
+                  <a href="https://github.com/tannakaken/vr-z-novel">github</a>
+                  にあります。
+                </p>
+                <button onClick={() => setShowModal(false)}>close</button>
+              </div>
+            </Html>
+          )}
         </XR>
       </Canvas>
     </div>

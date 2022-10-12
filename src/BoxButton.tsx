@@ -3,17 +3,26 @@ import { useFrame } from "@react-three/fiber";
 import { Mesh, Vector3Tuple } from "three";
 import { Interactive } from "@react-three/xr";
 
-const BoxButton = (props: {
+const BoxButton = ({
+  show = true,
+  position = [0, 0, 0],
+  onClick = () => {},
+}: {
+  show?: boolean;
   position?: Vector3Tuple;
   onClick?: () => void;
 }) => {
   const ref = useRef<Mesh>(null);
   const [speed, setSpeed] = useState(0.01);
-  useFrame((state, delta) => {
-    if (ref && ref.current) {
+  useFrame(() => {
+    if (ref.current) {
       ref.current.rotation.x += speed;
+      ref.current.rotation.y += speed / 2;
     }
   });
+  if (!show) {
+    return <></>;
+  }
   return (
     <Interactive
       onHover={() => {
@@ -24,13 +33,15 @@ const BoxButton = (props: {
       }}
     >
       <mesh
-        {...props}
+        position={position}
+        scale={0.5}
+        rotation={[0, Math.PI / 4, Math.PI / 2]}
         ref={ref}
-        onClick={() => props.onClick?.()}
+        onClick={() => onClick?.()}
         onPointerOver={() => setSpeed(0.03)}
         onPointerOut={() => setSpeed(0.01)}
       >
-        <boxGeometry args={[1, 1, 1]} />
+        <boxGeometry />
         <meshStandardMaterial
           color={
             speed === 0.05 ? "lightblue" : speed === 0.03 ? "hotpink" : "orange"
