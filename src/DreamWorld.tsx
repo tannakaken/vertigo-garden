@@ -329,7 +329,7 @@ const DreamWorld = () => {
               <mesh
                 position={[0, 0, -5.1]}
                 rotation={[0, 0, 0]}
-                scale={[12, 5, 5]}
+                scale={[12, 6, 5]}
               >
                 <planeBufferGeometry />
                 <meshBasicMaterial color="white" />
@@ -378,7 +378,17 @@ const DreamWorld = () => {
               </TextButton>
               <NotoText position={[4.2, -1.4, -5]}>にあります。</NotoText>
               <TextButton
-                position={[-4.8, -2.0, -5]}
+                position={[-5, -2.0, -5]}
+                onClick={() => {
+                  window.open(
+                    "https://tannakaken.xyz/novels/TheWorldAsWillAndScroll"
+                  );
+                }}
+              >
+                姉妹作小説
+              </TextButton>
+              <TextButton
+                position={[-4.8, -2.6, -5]}
                 onClick={() => {
                   setShowModal(false);
                 }}
