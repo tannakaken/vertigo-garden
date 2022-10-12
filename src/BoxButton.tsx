@@ -26,13 +26,14 @@ const BoxButton = ({
   return (
     <Interactive
       onHover={() => {
-        setSpeed(0.05);
+        setSpeed(0.03);
       }}
       onBlur={() => {
         setSpeed(0.01);
       }}
       onSelect={() => {
         onClick();
+        setSpeed(0.05);
       }}
     >
       <mesh
