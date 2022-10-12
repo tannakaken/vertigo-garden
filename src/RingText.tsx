@@ -4,25 +4,26 @@ import { useFrame } from "@react-three/fiber";
 
 type Props = {
   text: String;
+  offset?: number;
   onRotate: (newAngle: number) => void;
 };
 
 const period = 60;
 
-const RingText = (props: Props) => {
-  const characters = Array.from(props.text);
+const RingText = ({ text, offset = 0, onRotate }: Props) => {
+  const characters = Array.from(text);
   useFrame((state) => {
     const newAngle = Math.atan2(
       state.camera.matrix.elements[0],
       state.camera.matrix.elements[2]
     );
-    props.onRotate(newAngle);
+    onRotate(newAngle);
   });
   return (
     <Suspense fallback={null}>
       <group>
         {characters.map((character, index) => {
-          const i = index + period / 2;
+          const i = index + period / 2 + offset;
           const theta = -(i * Math.PI * 2) / period;
           return (
             <Text

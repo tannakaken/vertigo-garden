@@ -2,14 +2,14 @@ import React, { Suspense, useState } from "react";
 import { Text } from "@react-three/drei";
 import { useFrame } from "@react-three/fiber";
 
-const DebugText = () => {
+const DebugText = ({ text }: { text?: string }) => {
   const [value, setValue] = useState("");
   useFrame((state) => {
     const theta = Math.atan2(
       state.camera.matrix.elements[0],
       state.camera.matrix.elements[2]
     );
-    setValue(`${theta.toPrecision(2)}`);
+    setValue(`${theta.toPrecision(2)}:${text}`);
   });
   return (
     <Suspense fallback={null}>
