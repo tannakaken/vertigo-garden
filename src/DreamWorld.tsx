@@ -7,7 +7,7 @@ import React, {
 } from "react";
 import "./App.css";
 import * as THREE from "three";
-import { Hands, VRButton, XR } from "@react-three/xr";
+import { Controllers, Hands, VRButton, XR } from "@react-three/xr";
 import { useLoader, Canvas } from "@react-three/fiber";
 import { Html, OrbitControls } from "@react-three/drei";
 import RingText from "./RingText";
@@ -18,7 +18,7 @@ import BoxButton from "./BoxButton";
 const debug = false;
 
 const allText =
-  "あなたはいつもの癖で左回りに周りを見回す。紫の淡い霧がかかった花園がどこまでも広がっていた。しかし右回りで周囲を見回すと、突然花は散り、木は枯れ、茫漠たる荒野が広がり始めた。不思議な機械の乗り物が地面に埋まっている。しかし雲間から差し込む光に浮かび上がる光景には人の気配はない。湖の水面に映る風景の謎めいた歪みに気を取られていると、突然摩天楼が周囲に立ち並び始める。色鮮やかなネオン。しかし、そこにも人の気配はない。主人を失った機械ばかりが狂い咲く、騒がしい廃墟。そう思った途端、ビル群は実際に寂れた廃墟であることがわかる。そして廃墟を草が覆いはじめた。そこは最初の花畑だったのだ。あなたはそこから一歩も動いていない。あなたは奇妙な目眩に襲われて香り立つ鮮やかな薔薇の上へとへなへなと崩れ落ち、再び眠りへ、現実へと堕ちていく。";
+  "あなたはいつもの癖で左回りに周りを見回す。紫の淡い霧がかかった花園がどこまでも広がっていた。しかし右回りで周囲を見回すと、突然花は散り、木は枯れ、茫漠たる荒野が広がり始めた。不思議な機械の乗り物が地面に埋まっている。しかし雲間から差し込む光に浮かび上がる光景には人の気配はない。湖の水面に映る風景の謎めいた歪みに気を取られていると、突然摩天楼が周囲に立ち並び始める。色鮮やかなネオン。しかし、そこにも人の気配はない。主人を失った機械ばかりが狂い咲く、騒がしい廃墟。そう思った途端、ビル群は実際に寂れた廃墟であることがわかる。そして廃墟を草が覆いはじめた。そこは最初の花園だったのだ。あなたはそこから一歩も動いていない。あなたは奇妙な目眩に襲われて香り立つ鮮やかな薔薇の上へとへなへなと崩れ落ち、再び眠りへ、現実へと堕ちていく。";
 
 const configTexture = (texture: THREE.Texture) => {
   texture.encoding = THREE.sRGBEncoding;
@@ -198,6 +198,7 @@ const DreamWorld = () => {
             reverseOrbit
             dampingFactor={0.2}
           />
+          <Controllers />
           <Hands />
           <ambientLight />
           <pointLight position={[10, 10, 10]} />
