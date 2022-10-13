@@ -16,7 +16,7 @@
 
 <div><video controls src="https://user-images.githubusercontent.com/8900446/195574940-5ba0b091-fc63-4dcb-ac28-a2f4d26e5a7d.mp4" muted="false"></video></div>
 
-スマートフォンでは、タッチによるドラッグでの操作もできますが、画面下部のボタンを押すことで、スマートフォンの向きによる操作も可能です（手元のandroidでのテストでは少し挙動が不安定でした）。
+スマートフォンでは、タッチによるドラッグでの操作もできますが、画面下部のボタンを押すことで、スマートフォンの向きによる操作も可能です（手元の android でのテストでは少し挙動が不安定でした）。
 
 <div><video controls src="https://user-images.githubusercontent.com/8900446/195575141-5fb16dd0-336f-41c1-904e-2cd309fa1acb.mp4" muted="false"></video></div>
 
@@ -24,8 +24,7 @@
 
 <div><video controls src="https://user-images.githubusercontent.com/8900446/195575551-dc21028b-1889-4d6e-8516-3a41e996842c.mp4" muted="false"></video></div>
 
-
-Meta Quest2などのHMD（ヘッドマウントディスプレイ）でも視聴可能です。
+Meta Quest2 などの HMD（ヘッドマウントディスプレイ）でも視聴可能です。
 
 やはりくるくる回って小説を読んでください。周りのものにぶつからないよう気をつけてください。
 
@@ -34,6 +33,8 @@ Meta Quest2などのHMD（ヘッドマウントディスプレイ）でも視聴
 ## 作成の概要
 
 背景は無料の Google Colab 上で Stable Diffusion の InPaint を使うことで生成した。
+
+使用した colab ファイルは[colabs フォルダ](https://github.com/tannakaken/vertigo-garden/tree/master/colabs)に置いた。
 
 最初は Stable Diffusion にパノラマ画像を追加学習させようとしたが、同じようなパノラマ画像しかないので、学習させると似たような画像ばかりになってしまうので、
 通常の画像で我慢することにした。
