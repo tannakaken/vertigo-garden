@@ -1,4 +1,4 @@
-# 目眩の花園
+# [目眩の花園](https://vertigo-garden.vercel.app/)
 
 360 度背景に横一列に文字が並び、回転につれ背景や文字が更新されていく小説。
 
@@ -22,8 +22,6 @@ UI は [react-three-fiber](https://github.com/pmndrs/react-three-fiber) 、[drei
 に対応している。
 
 ## 画像の生成方法
-
-
 
 ## ローカルでの起動方法
 
