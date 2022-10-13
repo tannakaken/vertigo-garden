@@ -15,3 +15,17 @@
         display: block;
     }
 }
+
+.vr-btn {
+    position: absolute;
+    left: 50%;
+    bottom: 24px;
+    transform: translateX(-50%);
+    z-index: 100;
+    background: transparent;
+    color: white;
+    border: 1px solid white;
+    border-radius: 4px;
+    padding: 12px 24px;
+    cursor: pointer;
+}

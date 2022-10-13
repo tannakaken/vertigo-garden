@@ -1,29 +1,37 @@
-import React, { Suspense } from "react";
+import React, { Suspense, useState } from "react";
 import { Text } from "@react-three/drei";
 import { useFrame } from "@react-three/fiber";
+import { PageData } from "./RotationListener";
 
 type Props = {
-  text: String;
-  offset?: number;
-  onRotate: (newAngle: number) => void;
+  pageData: PageData;
 };
 
-const period = 60;
+/**
+ * 一周の文字数
+ */
+export const period = 60;
+/**
+ * 四半周の文字数
+ */
+export const quater = period / 4;
 
-const RingText = ({ text, offset = 0, onRotate }: Props) => {
-  const characters = Array.from(text);
-  useFrame((state) => {
-    const newAngle = Math.atan2(
-      state.camera.matrix.elements[0],
-      state.camera.matrix.elements[2]
-    );
-    onRotate(newAngle);
+/**
+ * ユーザーの周囲に円形に表示されるテキスト
+ */
+const RingText = ({ pageData }: Props) => {
+  const [currentText, setCurrentText] = useState(pageData.text);
+  // const characters = Array.from(text);
+  useFrame(() => {
+    if (pageData.text !== currentText) {
+      setCurrentText(pageData.text);
+    }
   });
   return (
     <Suspense fallback={null}>
       <group>
-        {characters.map((character, index) => {
-          const i = index + period / 2 + offset;
+        {Array.from(currentText).map((character, index) => {
+          const i = index + period / 2 + pageData.textOffset;
           const theta = -(i * Math.PI * 2) / period;
           return (
             <Text

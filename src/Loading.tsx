@@ -1,5 +1,8 @@
 import React from "react";
 
+/**
+ * テクスチャをロード中に表示されるテキスト
+ */
 const Loading = () => {
   return (
     <div style={{ height: "100vh", width: "100vw" }}>

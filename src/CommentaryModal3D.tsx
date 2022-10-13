@@ -7,7 +7,10 @@ type Props = {
   onClose: () => void;
 };
 
-const Modal3D = ({ show, onClose }: Props) => {
+/**
+ * VR空間でも表示できるモーダル。
+ */
+const CommentaryModal3D = ({ show, onClose }: Props) => {
   if (!show) {
     return <></>;
   }
@@ -79,4 +82,4 @@ const Modal3D = ({ show, onClose }: Props) => {
   );
 };
 
-export default Modal3D;
+export default CommentaryModal3D;

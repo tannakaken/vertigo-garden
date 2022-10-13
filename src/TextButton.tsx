@@ -6,6 +6,9 @@ import { Interactive } from "@react-three/xr";
 const blue = "#5555FF" as const;
 const deepBlue = "#0000FF" as const;
 
+/**
+ * VR空間でも表示できる、リンクテキスト
+ */
 const TextButton = ({
   children,
   position = [0, 0, 0],

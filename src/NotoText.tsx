@@ -2,6 +2,9 @@ import React from "react";
 import { Text } from "@react-three/drei";
 import { Vector3Tuple } from "three";
 
+/**
+ * VR空間でも表示できるテキスト
+ */
 const NotoText = ({
   fontSize = 0.3,
   children,
