@@ -36,6 +36,7 @@ const RingText = ({ text, offset = 0, onRotate }: Props) => {
               fontSize={1}
               strokeColor={"black"}
               strokeWidth={0.01}
+              characters={character}
             >
               {character}
             </Text>

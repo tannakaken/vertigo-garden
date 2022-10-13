@@ -47,6 +47,7 @@ const TextButton = ({
         onClick={() => {
           onClick();
         }}
+        characters={children}
       >
         {children}
       </Text>

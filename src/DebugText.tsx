@@ -22,6 +22,7 @@ const DebugText = ({ text }: { text?: string }) => {
         fontSize={1}
         strokeColor={"black"}
         strokeWidth={0.01}
+        characters={"0123456789:."}
       >
         {value}
       </Text>
@@ -34,6 +35,7 @@ const DebugText = ({ text }: { text?: string }) => {
         fontSize={1}
         strokeColor={"black"}
         strokeWidth={0.01}
+        characters={"0123456789:."}
       >
         {value}
       </Text>
@@ -46,6 +48,7 @@ const DebugText = ({ text }: { text?: string }) => {
         fontSize={1}
         strokeColor={"black"}
         strokeWidth={0.01}
+        characters={"0123456789:."}
       >
         {value}
       </Text>
@@ -58,6 +61,7 @@ const DebugText = ({ text }: { text?: string }) => {
         fontSize={1}
         strokeColor={"black"}
         strokeWidth={0.01}
+        characters={"0123456789:."}
       >
         {value}
       </Text>

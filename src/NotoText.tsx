@@ -24,6 +24,7 @@ const NotoText = ({
       strokeColor={"black"}
       color={"black"}
       strokeWidth={0.01}
+      characters={children}
     >
       {children}
     </Text>
