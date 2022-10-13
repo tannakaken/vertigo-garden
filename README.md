@@ -2,17 +2,6 @@
 
 360 度背景に横一列に文字が並び、回転につれ背景や文字が更新されていく小説。
 
-背景は無料の Google Colab 上で Stable Diffusion の InPaint を使うことで生成した。
-
-最初は Stable Diffusion にパノラマ画像を追加学習させようとしたが、同じようなパノラマ画像しかないので、学習させると似たような画像ばかりになってしまうので、
-通常の画像で我慢することにした。
-
-このアプリを作成中に [Text2Light](https://github.com/FrozenBurning/Text2Light) という、プロンプトからパノラマ画像を作成するモデルを知ったが、
-Inpainting（画像の上書き）ができるかどうかがよくわからなかったのと、
-この作品をイグ BFC3 に出すためには今から試行錯誤する時間がなかったので、諦めた。
-
-UI は [react-three-fiber](https://github.com/pmndrs/react-three-fiber) 、[drei](https://github.com/pmndrs/drei) および [react-xr](https://github.com/pmndrs/react-xr) で作成した。
-
 操作は
 
 - マウス及び指によるスクロール、
@@ -20,6 +9,44 @@ UI は [react-three-fiber](https://github.com/pmndrs/react-three-fiber) 、[drei
 - HMD の VR モード
 
 に対応している。
+
+## 動画での説明
+
+デスクトップではマウスのドラッグでスクロールできます。
+
+<div><video controls src="https://user-images.githubusercontent.com/8900446/195574940-5ba0b091-fc63-4dcb-ac28-a2f4d26e5a7d.mp4" muted="false"></video></div>
+
+スマートフォンでは、タッチによるドラッグでの操作もできますが、画面下部のボタンを押すことで、スマートフォンの向きによる操作も可能です（手元のandroidでのテストでは少し挙動が不安定でした）。
+
+<div><video controls src="https://user-images.githubusercontent.com/8900446/195575141-5fb16dd0-336f-41c1-904e-2cd309fa1acb.mp4" muted="false"></video></div>
+
+くるくる回って小説を読んでください。気持ち悪くなったら、休んでください。
+
+<div><video controls src="https://user-images.githubusercontent.com/8900446/195575551-dc21028b-1889-4d6e-8516-3a41e996842c.mp4" muted="false"></video></div>
+
+
+Meta Quest2などのHMD（ヘッドマウントディスプレイ）でも視聴可能です。
+
+やはりくるくる回って小説を読んでください。周りのものにぶつからないよう気をつけてください。
+
+<div><video controls src="https://user-images.githubusercontent.com/8900446/195575849-80e85f3c-6aa2-4eb7-b066-52873bcfbfae.mp4" muted="false"></video></div>
+
+## 作成の概要
+
+背景は無料の Google Colab 上で Stable Diffusion の InPaint を使うことで生成した。
+
+最初は Stable Diffusion にパノラマ画像を追加学習させようとしたが、同じようなパノラマ画像しかないので、学習させると似たような画像ばかりになってしまうので、
+通常の画像で我慢することにした。
+
+このアプリを作成中に [Text2Light](https://github.com/FrozenBurning/Text2Light) という、プロンプトからパノラマ画像を作成するモデルの存在を知ったが、
+Inpainting（画像の上書き）ができるかどうかがよくわからなかったのと、
+この作品をイグ BFC3 に出すためには今から試行錯誤する時間がなかったので、諦めた。
+
+UI は [react-three-fiber](https://github.com/pmndrs/react-three-fiber) 、[drei](https://github.com/pmndrs/drei) および [react-xr](https://github.com/pmndrs/react-xr) で作成した。
+
+カメラの視点の取得は、[Three.js](https://threejs.org/)のドキュメントを見てもよくわからなかったので、webgl のカメラ行列から直接計算している。
+
+スマートフォンの向きのデータは、[DeviceOrientationEvent](https://developer.mozilla.org/ja/docs/Web/API/Device_orientation_events/Detecting_device_orientation)をハンドリングしている。
 
 ## 画像の生成方法
 
