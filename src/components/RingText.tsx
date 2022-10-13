@@ -38,7 +38,7 @@ const RingText = ({ pageData }: Props) => {
               key={`ringtext-${character}-${index}`}
               position={[8 * Math.sin(theta), 0, 8 * Math.cos(theta)]}
               rotation={[0, theta + Math.PI, 0]}
-              font="./NotoSansJP-Regular.otf"
+              font="./fonts/NotoSansJP-Regular.otf"
               anchorX={"center"}
               anchorY={"middle"}
               fontSize={1}

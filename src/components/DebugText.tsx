@@ -16,7 +16,7 @@ const DebugText = ({ text }: { text?: string }) => {
       <Text
         position={[0, 2, -8]}
         rotation={[0, 0, 0]}
-        font="./NotoSansJP-Regular.otf"
+        font="./fonts/NotoSansJP-Regular.otf"
         anchorX={"center"}
         anchorY={"middle"}
         fontSize={1}
@@ -29,7 +29,7 @@ const DebugText = ({ text }: { text?: string }) => {
       <Text
         position={[-8, 2, 0]}
         rotation={[0, Math.PI / 2, 0]}
-        font="./NotoSansJP-Regular.otf"
+        font="./fonts/NotoSansJP-Regular.otf"
         anchorX={"center"}
         anchorY={"middle"}
         fontSize={1}
@@ -42,7 +42,7 @@ const DebugText = ({ text }: { text?: string }) => {
       <Text
         position={[0, 2, +8]}
         rotation={[0, Math.PI, 0]}
-        font="./NotoSansJP-Regular.otf"
+        font="./fonts/NotoSansJP-Regular.otf"
         anchorX={"center"}
         anchorY={"middle"}
         fontSize={1}
@@ -55,7 +55,7 @@ const DebugText = ({ text }: { text?: string }) => {
       <Text
         position={[8, 2, 0]}
         rotation={[0, -Math.PI / 2, 0]}
-        font="./NotoSansJP-Regular.otf"
+        font="./fonts/NotoSansJP-Regular.otf"
         anchorX={"center"}
         anchorY={"middle"}
         fontSize={1}

@@ -7,8 +7,8 @@ import DreamWorldPresenter, {
   allText,
   Orientation,
 } from "./DreamWorldPresenter";
-import { quater } from "./RingText";
-import { PageData } from "./RotationListener";
+import { quater } from "./components/RingText";
+import { PageData } from "./components/RotationListener";
 
 /**
  * 背景素材は球の内側に貼るため、普通に貼ると左右が逆になるので、左右反転する。
@@ -38,18 +38,18 @@ const DreamWorld = () => {
    * 使用する背景素材全体
    */
   const textureList = useLoader(THREE.TextureLoader, [
-    "initial_image.webp",
-    "second_image.webp",
-    "third_image.webp",
-    "forth_image.webp",
-    "fifth_image.webp",
-    "sixth_image.webp",
-    "seventh_image.webp",
-    "eighth_image.webp",
-    "nineth_image.webp",
-    "tenth_image.webp",
-    "eleventh_image.webp",
-    "last_image.webp",
+    "img/initial_image.webp",
+    "img/second_image.webp",
+    "img/third_image.webp",
+    "img/forth_image.webp",
+    "img/fifth_image.webp",
+    "img/sixth_image.webp",
+    "img/seventh_image.webp",
+    "img/eighth_image.webp",
+    "img/nineth_image.webp",
+    "img/tenth_image.webp",
+    "img/eleventh_image.webp",
+    "img/last_image.webp",
   ]);
   /**
    * 最後に最初のページに戻るようにした背景素材のリスト

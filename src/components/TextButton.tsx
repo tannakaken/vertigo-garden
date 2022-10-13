@@ -34,7 +34,7 @@ const TextButton = ({
       <Text
         position={position}
         rotation={[0, 0, 0]}
-        font="./NotoSansJP-Regular.otf"
+        font="./fonts/NotoSansJP-Regular.otf"
         anchorX={"left"}
         anchorY={"middle"}
         fontSize={0.3}

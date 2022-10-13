@@ -20,7 +20,7 @@ const NotoText = ({
     <Text
       position={position}
       rotation={[0, 0, 0]}
-      font="./NotoSansJP-Regular.otf"
+      font="./fonts/NotoSansJP-Regular.otf"
       anchorX={anchorX}
       anchorY={"middle"}
       fontSize={fontSize}

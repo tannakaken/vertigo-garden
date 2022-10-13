@@ -4,12 +4,12 @@ import * as THREE from "three";
 import { Controllers, Hands, VRButton, XR } from "@react-three/xr";
 import { Canvas } from "@react-three/fiber";
 import { OrbitControls } from "@react-three/drei";
-import RingText from "./RingText";
+import RingText from "./components/RingText";
 import type { OrbitControls as OrbitControlsImpl } from "three-stdlib";
-import DebugText from "./DebugText";
-import StartAndGallBoxButton from "./StartAndGallBoxButton";
-import CommentaryModal3D from "./CommentaryModal3D";
-import RotationListener, { PageData } from "./RotationListener";
+import DebugText from "./components/DebugText";
+import StartAndGallBoxButton from "./components/StartAndGallBoxButton";
+import CommentaryModal3D from "./components/CommentaryModal3D";
+import RotationListener, { PageData } from "./components/RotationListener";
 
 /**
  * trueにするとデバッグ用のUIが表示される
