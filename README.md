@@ -92,15 +92,15 @@ UI は [react-three-fiber](https://github.com/pmndrs/react-three-fiber) 、[drei
 
 真ん中を上書きしてしまったため、画像が繋がらなくなってしまいました。
 
-やり直そうかとも思いましたが、簡単な解決策を見つけました。元の画像も変えてしまえばいのです。
+やり直そうかとも思いましたが、簡単な解決策を見つけました。元の画像も変えてしまえばいいのです。
 
-![廃墟の右半分を花畑に繋がるようにした](https://raw.githubusercontent.com/tannakaken/vertigo-garden/master/docs/image16.png)
+![廃墟の右半分を花畑に繋がるようにした](https://raw.githubusercontent.com/tannakaken/vertigo-garden/master/docs/image17.png)
 
 そして、最初の画像とのつなげるために、もう二つ画像を作りました。
 
-![花畑の左半分を廃墟に繋がるようにした](https://raw.githubusercontent.com/tannakaken/vertigo-garden/master/docs/image17.png)
+![花畑の左半分を廃墟に繋がるようにした](https://raw.githubusercontent.com/tannakaken/vertigo-garden/master/docs/image18.png)
 
-![最初の画像の左右反転](https://raw.githubusercontent.com/tannakaken/vertigo-garden/master/docs/image18.png)
+![最初の画像の左右反転](https://raw.githubusercontent.com/tannakaken/vertigo-garden/master/docs/image19.png)
 
 こうして花畑から始まり、半回転ごとに風景が変わり、最後にまた花畑へ終わる、一連の画像ができました。
 
