@@ -58,7 +58,7 @@ const CommentaryModal3D = ({ show, onClose }: Props) => {
         <TextButton
           position={[3.3, -1.4, -5]}
           onClick={() => {
-            window.open("https://github.com/tannakaken/vr-z-novel");
+            window.open("https://github.com/tannakaken/vertigo-garden");
           }}
         >
           github
