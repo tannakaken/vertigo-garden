@@ -19,12 +19,22 @@ const StartAndGallBoxButton = ({
   const updateShow = useCallback(() => {
     if (
       !show &&
-      (pageData.backgroundPage === 0 || pageData.backgroundPage >= 11)
+      (pageData.textPage === 0 ||
+        pageData.textPage === -1 ||
+        pageData.textPage === 26 ||
+        pageData.textPage === 27 ||
+        pageData.textPage === 28)
     ) {
       setShow(true);
     } else if (
       show &&
-      !(pageData.backgroundPage === 0 || pageData.backgroundPage >= 11)
+      !(
+        pageData.textPage === 0 ||
+        pageData.textPage === -1 ||
+        pageData.textPage === 26 ||
+        pageData.textPage === 27 ||
+        pageData.textPage === 28
+      )
     ) {
       setShow(false);
     }

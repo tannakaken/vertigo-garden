@@ -110,7 +110,7 @@ const DreamWorld = () => {
 
   const setNextText = useCallback((pageData: PageData) => {
     // 26はテキストが終わって消える数字の実測値。
-    if (pageData.textPage > 26) {
+    if (pageData.textPage > 29) {
       return;
     }
     // 1/4回転するごとに、テキストを1/4回転分追加し、1/4消していく
