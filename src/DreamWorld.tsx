@@ -109,7 +109,7 @@ const DreamWorld = () => {
   );
 
   const setNextText = useCallback((pageData: PageData) => {
-    // 26はテキストが終わって消える数字の実測値。
+    // この数字はテキストが終わって消える数字の実測値。
     if (pageData.textPage > 29) {
       return;
     }

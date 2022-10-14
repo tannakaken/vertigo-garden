@@ -7,7 +7,9 @@ const blue = "#5555FF" as const;
 const deepBlue = "#0000FF" as const;
 
 /**
- * VR空間でも表示できる、リンクテキスト
+ * VR空間でも表示できる、リンクテキスト。
+ *
+ * マウスやHMDのコントローラで触ると色が変わる。
  */
 const TextButton = ({
   children,

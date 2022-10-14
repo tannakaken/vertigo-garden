@@ -4,6 +4,11 @@ import { Mesh, Vector3Tuple } from "three";
 import { Interactive } from "@react-three/xr";
 import { PageData } from "./RotationListener";
 
+/**
+ * 解説モーダルを表示するためのボタン。
+ *
+ * マウスやHMDのコントローラーで触ると色が変わって回転スピードが速くなる。
+ */
 const StartAndGallBoxButton = ({
   pageData,
   position = [0, 0, 0],
@@ -16,6 +21,9 @@ const StartAndGallBoxButton = ({
   const ref = useRef<Mesh>(null);
   const [speed, setSpeed] = useState(0.01);
   const [show, setShow] = useState(true);
+  /**
+   * 小説の最初と最後だけこのUIを表示する
+   */
   const updateShow = useCallback(() => {
     if (
       !show &&

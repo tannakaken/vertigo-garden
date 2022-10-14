@@ -169,11 +169,7 @@ const DreamWorldPresenter = (props: Props) => {
           <ambientLight />
           <pointLight position={[10, 10, 10]} />
           <RingText pageData={pageData} />
-          {debug && (
-            <DebugText
-              text={`${pageData.textPage}:${pageData.textOffset}:${pageData.backgroundPage}`}
-            />
-          )}
+          {debug && <DebugText pageData={pageData} />}
           <StartAndGallBoxButton
             position={[0, 1, -8]}
             onClick={() => {
