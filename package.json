@@ -1,7 +1,20 @@
 {
   "name": "vertigo-garden",
-  "version": "0.1.0",
-  "private": true,
+  "description": "360 panoramic novel",
+  "version": "1.0.0",
+  "author": "Tannakian Cat <tannakaken@gmail.com> (https://github.com/tannakaken/)",
+  "license": "CC-BY-SA-4.0",
+   "repository": {
+    "type": "git",
+    "url": "https://github.com/tannakaken/vertigo-garden.git"
+  },
+  "keywords": [
+    "AI",
+    "VR",
+    "HMD",
+    "react",
+    "three.js"
+  ],
   "dependencies": {
     "@react-three/drei": "^9.28.2",
     "@react-three/fiber": "^8.7.2",
